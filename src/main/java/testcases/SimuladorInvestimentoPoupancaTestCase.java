@@ -23,7 +23,6 @@ public class SimuladorInvestimentoPoupancaTestCase {
 	
 	@Before
 	public void setUp() {
-		Report.startTest("Simulador de Investimento Poupanca");
 		driver = Drivers.getFirefoxDriver();
 		
 		simuladorPage = new SimuladorTask(driver);
@@ -32,28 +31,32 @@ public class SimuladorInvestimentoPoupancaTestCase {
 	
 	@Test
 	public void testeCaminhoFeliz() {
+		Report.startTest("Simulador de Investimento Poupanca - Caminho Feliz");
+
 		driver.get("https://www.sicredi.com.br/html/ferramenta/simulador-investimento-poupanca/");
 		driver.manage().window().maximize();
 
 		Report.log(Status.INFO, "Site foi carregado", ScreenShot.capture(driver));
 
-		simuladorPage.simularInvestimento("2000", "2000", "58");
+		simuladorPage.preencherDadosInvestimento("200000", "200000", "58");
 		Report.log(Status.INFO, "Dados inseridos no formulario.", ScreenShot.capture(driver));
-
+		simuladorPage.prosseguirSimulacao();
 		verificationPoint.verificarValorSimuladoCaminhoFeliz();
 	}	
 
 	@Test
 	public void testeValoresInvalidos() {
+		Report.startTest("Simulador de Investimento Poupanca - Campos Vazios");
+		
 		driver.get("https://www.sicredi.com.br/html/ferramenta/simulador-investimento-poupanca/");
 		driver.manage().window().maximize();
 
 		Report.log(Status.INFO, "Site foi carregado", ScreenShot.capture(driver));
 
-		simuladorPage.simularInvestimento("0", "0", "0");
+		simuladorPage.preencherDadosInvestimento("0", "0", "0");
 		Report.log(Status.INFO, "Dados inseridos no formulario.", ScreenShot.capture(driver));
 
-		verificationPoint.verificarValorSimuladoCaminhoFeliz();
+		verificationPoint.verificarValoresInvalidos();
 	}	
 	@After
 	public void tearDown() {

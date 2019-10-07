@@ -11,15 +11,18 @@ public class SimuladorTask {
 	public SimuladorTask(WebDriver driver){
 		this.simulador = new SimuladorAppObject(driver);
 	}
-	
+		
 	public void limparFormularioLink(){
 		simulador.getLimparFormularioLink().click();
 	}
 	
-	public void simularInvestimento(String valorAplicar	, String valorInvestir, String tempo) {
+	public void preencherDadosInvestimento(String valorAplicar	, String valorInvestir, String tempo) {
 		simulador.getValorAplicarTextField().sendKeys(valorAplicar);
 		simulador.getValorInvestirTextField().sendKeys(valorInvestir);
 		simulador.getTempoInvestimentoTextField().sendKeys(tempo);
+	}
+	
+	public void prosseguirSimulacao(){
 		simulador.getSimularButton().click();
 	}
 }
