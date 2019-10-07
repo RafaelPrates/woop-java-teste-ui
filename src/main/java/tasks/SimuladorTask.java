@@ -25,4 +25,9 @@ public class SimuladorTask {
 	public void prosseguirSimulacao(){
 		simulador.getSimularButton().click();
 	}
+	
+	public void alterarUnidadeDeTempo(){
+		simulador.getTempoSelect().click();
+		simulador.getUnidadeTempoAnos().click();
+	}
 }

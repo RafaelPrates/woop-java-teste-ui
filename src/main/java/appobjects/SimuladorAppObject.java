@@ -30,4 +30,12 @@ public class SimuladorAppObject {
 	public WebElement getLimparFormularioLink(){		
 		return driver.findElement(By.partialLinkText("Limpar formulário"));
 	}
+	
+	public WebElement getTempoSelect(){		
+		return driver.findElement(By.className("btSelect"));
+	}
+	
+	public WebElement getUnidadeTempoAnos(){		
+		return driver.findElement(By.partialLinkText("Anos"));
+	}
 }
